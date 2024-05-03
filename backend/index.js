@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(
     cors({
-        origin: process.env.FRONTEND_ORIGIN || "http://127.0.0.1:5173", 
+        origin: process.env.FRONTEND_ORIGIN, 
     })
 );
 

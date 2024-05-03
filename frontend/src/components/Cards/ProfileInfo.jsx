@@ -1,7 +1,19 @@
 import React from "react";
 import { getInitials } from "../../utils/helper";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 
-const ProfileInfo = ({ userInfo, onLogout }) => {
+const ProfileInfo = ({ userInfo }) => {
+  const navigate = useNavigate();
+  const { setAuthUser} = useAuthContext();
+
+
+  const onLogout = () => {
+    console.log("logout")
+    localStorage.clear();
+    setAuthUser("");
+    navigate("/login");
+  };
   return (
     <div className="flex items-center gap-3">
       <div className="w-12 h-12 flex items-center justify-center rounded-full text-slate-950 font-medium bg-slate-100">

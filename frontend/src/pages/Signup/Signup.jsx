@@ -4,12 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import PasswordInput from "../../components/Input/PasswordInput";
 import { validateEmail } from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
+import { useAuthContext } from "../../context/AuthContext";
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+
+  const {setAuthUser} = useAuthContext();
+
 
   const navigate = useNavigate();
 
@@ -49,7 +53,8 @@ const Signup = () => {
       }
       if (response.data && response.data.accessToken) {
         localStorage.setItem("token", response.data.accessToken);
-        navigate("/dashboard");
+        setAuthUser(response.data.accessToken);
+        navigate("/");
       }
     } catch (error) {
       if (
