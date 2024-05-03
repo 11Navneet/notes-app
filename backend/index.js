@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(
     cors({
-        origin: "https://tubular-panda-53f437.netlify.app",
+        origin: "https://note-mern-app.netlify.app",
     })
 );
 
