@@ -1,9 +1,8 @@
 require("dotenv").config();
 
-const config = require('./config.json');
 const mongoose = require("mongoose")
 
-mongoose.connect(config.connectionString);
+mongoose.connect(process.env.MONGO_URL);
 
 const User = require("./models/user.model")
 const Note = require("./models/note.model")
@@ -108,7 +107,6 @@ app.post("/login", async (req, res) => {
 //Get user
 app.get("/get-user", authenticateToken, async (req, res) => {
     const { user } = req.user;
-    console.log(user);
     const isUser = await User.findOne({ _id: user._id });
     
 
