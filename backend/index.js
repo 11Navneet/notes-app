@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(
     cors({
-        origin: "*",
+        origin: "https://tubular-panda-53f437.netlify.app/",
     })
 );
 
